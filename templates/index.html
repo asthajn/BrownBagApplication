@@ -1,0 +1,17 @@
+<html ng-app="brownBagApp">
+   <head>
+      <title>Brown Bag Menu</title>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"> </script>
+      <script type="text/javascript" src="javascripts/brownBag.js"></script>
+      <link rel="stylesheets" href="styles.css">
+   </head>
+   
+   <body ng-controller="menuController">
+      <div class = "heading">Welcome to Brown Bag Lunch Menu poll</div>
+      <div>
+        <button class="vegMenu" ng-click="showVegMenu()">Vegetarian Menu</button> 
+        <button class="nonVegMenu" ng-click="showNonVegMenu()">Non Vegetarian Menu</button>
+      </div>
+      <div class="menu">{{menuData}}</div>
+   </body>
+</html>

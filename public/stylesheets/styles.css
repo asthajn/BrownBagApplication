@@ -1,0 +1,20 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.heading {
+    font: 22px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.vegMenu {
+    color: green;
+}
+
+.nonVegMenu {
+    color: red;
+}
