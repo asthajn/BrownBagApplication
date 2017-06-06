@@ -13,16 +13,18 @@ var server = app.listen(8081, function () {
 });
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongod://localhost/brownBagApp')
+mongoose.connect('mongodb://127.0.0.1:27017/brownBagApp')
 .then(function(){
   console.log("connection to mongo successful");
 }).catch(function(err){
   console.log(err);
 })
 
-
 var brownBag = require('./routes/brownBag.js');
 app.use('/brownBag', brownBag);
+
+var Names = require('./routes/names.js');
+app.use('/names', Names);
 var index = require('./routes/index');
 var templates = app.set('templates', path.join(__dirname, 'templates'));
 

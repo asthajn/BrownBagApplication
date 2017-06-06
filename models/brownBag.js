@@ -1,7 +1,11 @@
 var mongoose = require('mongoose');
 //create a schema
 var brownBagSchema = new mongoose.Schema({
-  name: "string"
+  name: "string",
+  preferred: "string",
+  option: "string"
 });
 
-module.exports = mongoose.model('brownBagModel', brownBagSchema);
+var BrownBag = mongoose.model('brownBag', brownBagSchema);
+
+module.exports = BrownBag;
