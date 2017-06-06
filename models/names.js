@@ -8,20 +8,26 @@ var Names = mongoose.model('names', nameSchema);
 
 var findRecord = function(){
     console.log("We'll find the record");
-    var record = Names.findOne({name: "Astha"})
-    if(record.name != undefined){
-        console.log("Record found with name: ", record.name);
-    }else{
-        Names.create({
-            name: "Astha"
-        }, function(err, success){
-            if(err){
-                console.log(err);
+    var record = Names.findOne({"name": "Astha"}, function(err, found){
+        if(err){
+            console.log("could not find the record", err)
+        }else{
+            if(found == null){
+                console.log("null found:");
+                Names.create({
+                    name: "Astha"
+                }, function(err, success){
+                    if(err){
+                        console.log(err);
+                    }else{
+                        console.log("success");
+                    }
+                })
             }else{
-                console.log("success");
+                console.log("record found: ", found.name)
             }
-        })
-    }
+        }
+    })
 }();
 
 

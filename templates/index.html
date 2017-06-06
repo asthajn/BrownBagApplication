@@ -17,7 +17,10 @@
         <button class="button vegMenu" ng-click="showVegMenu()">Vegetarian Menu</button> 
         <button class="button nonVegMenu" ng-click="showNonVegMenu()">Non Vegetarian Menu</button>
       </div>
-      <div class="menu">{{menuData}}</div>
+      <div id="container">
+        <div id="left"><img ng-src="{{img_url1}}"/></div>
+        <div id="right"><img ng-src="{{img_url2}}"/></div>
+      </div>
       <br>
       <div>
     <div class="btn-group" ng-click="selectName($event)" uib-dropdown is-open="status.names.isopen">
@@ -47,7 +50,17 @@
         </ul>
     </div>
       </div>
-      <div><button type="submit" ng-disabled="isSubmitDisabled" ng-click="save()">Submit Vote</button></div>
+      <div>
+  <form>
+    <!--<label for="fname">Insert Name</label>-->
+    <input type="text" id="fname" ng-model="insertedName" name="firstname" placeholder="Your name..">
+    <p>Please insert your name if it doesn't exist in the list</p>
+  
+    <input type="submit" ng-click="insertName()" value="Submit">
+  </form>
+</div>
+      <div><input ng-disabled="isSubmitDisabled" type="submit"  ng-click="save()" value="Submit Vote"></div>
+      <div><input type="submit"  ng-click="download()" value="Download Data"></div>
       <div>{{submittedMessage}}</div>
    </body>
 </html>

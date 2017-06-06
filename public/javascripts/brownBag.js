@@ -1,13 +1,23 @@
 var app = angular.module('brownBagApp', ['ui.bootstrap', 'ngResource']);
 
+app.factory('Votes', function($resource){
+	return $resource('/brownBag/insertVote');
+});
 
-app.controller('menuController', function($scope, $http, $resource){
+app.factory('Names', function($resource){
+	return $resource('/names');
+})
+
+app.factory('Download', function($resource){
+	return $resource('/download', {isArray: false});
+})
+
+app.controller('menuController', function($window, $scope, $http, $resource, Votes, Names, Download){
 
 var Names = $resource('/names');
-	$scope.names = Names.query();
+$scope.names = Names.query();
 	console.log($scope.names);
 
-var Votes = $resource('/brownBag/insertVote');
 
 var submitReset = function(){
 	console.log("submit reset called");
@@ -88,11 +98,40 @@ var submitReset = function(){
 			}
 		}
 	}
-	$scope.save = function(){
-		var vote = new Votes({"name": $scope.selected.name, "preferred": $scope.selected.preference, "option": $scope.selected.option});
-		console.log("vote: ",vote);
-		Votes.save(vote);
+
+	$scope.insertName = function(){
+		if($scope.insertedName == "" || $scope.insertedName == undefined || $scope.insertedName == null)
+			return;
+		var newName = $scope.insertedName.toLowerCase();
+		newName = {
+			"name": newName
+		}
+		$scope.insertedName = "";
+		Names.save(newName, function(err, success){
+			if(err){
+				console.log(err)
+			}else{
+				console.log(success);
+				$scope.insertMessage = success
+			}
+		});
+		$window.location.reload();
 	}
+	$scope.save = function(){
+		var vote = {
+			"name": $scope.selected.name, 
+			"preferred": $scope.selected.preference,
+			"option": $scope.selected.option
+		}
+		Votes.save(vote, function(){
+			console.log("vote saved");
+		});
+	}
+
+	$scope.download = function(){
+		$window.location.href = '/download';
+	}
+
 	$scope.getNames = function(){
 		$http({method: 'GET', url: '/getNames'}).
 		success(function(data, status, headers, config) {
@@ -109,6 +148,8 @@ var submitReset = function(){
 
 	$scope.menuData = "";
     $scope.showVegMenu = function(){
+		$scope.img_url1 = '../veg-1.jpg';
+		$scope.img_url2 = '../veg-2.jpg';
 		$scope.menuData = "Aaloo Gobhi Manchurian"
 	}
 	$scope.showNonVegMenu = function(){

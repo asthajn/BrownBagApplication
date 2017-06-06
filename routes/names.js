@@ -12,4 +12,27 @@ router.get('/', function(req, res, next) {
     res.json(names);
   });
 });
+
+router.post('/', function(req, res){
+    console.log("Adding new name: ", req.body);
+    Names.findOne({"name": req.body.name}, function(err, record){
+        if(err){
+            console.log("Error finding name");
+        }else{
+            name = new Names(req.body);
+            if(record == null){
+                console.log("Record not exists, creating a new one")
+                name.save(function(err, name) {
+                    if (err){
+                    return res.send(500, err);
+                    }
+                    return res.json(name);
+                    })
+            }else{
+                console.log("Name already exists");
+                res.json("Name already exists");
+            }
+        }
+    })
+})
 module.exports = router;
