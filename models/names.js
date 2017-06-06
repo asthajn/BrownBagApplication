@@ -7,7 +7,6 @@ var nameSchema = new mongoose.Schema({
 var Names = mongoose.model('names', nameSchema);
 
 var findRecord = function(){
-    console.log("We'll find the record");
     var record = Names.findOne({"name": "Astha"}, function(err, found){
         if(err){
             console.log("could not find the record", err)

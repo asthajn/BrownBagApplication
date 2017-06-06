@@ -45,24 +45,24 @@ img {
   
 }
 #left:hover img {
-  -moz-transform: scale(1.8);
-  -webkit-transform: scale(1.8);
-  transform: scale(1.8);
+  -moz-transform: scale(2.5);
+  -webkit-transform: scale(2.5);
+  transform: scale(2.5);
 }
 #right:hover img {
-  -moz-transform: scale(1.5);
-  -webkit-transform: scale(1.5);
-  transform: scale(1.5);
+  -moz-transform: scale(2.5);
+  -webkit-transform: scale(2.5);
+  transform: scale(2.5);
 }
 
-#container {height: 100%; width:100%; font-size: 0;
-overflow-y: scroll;}
-#left, #right {display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 12px;}
-#left {width: 50%; 
-height: 100%;
+#container {height: 60%; width:80%; font-size: 0;
 }
-#right {width: 50%; 
-height: 100%;}
+#left, #right {width: 50%; 
+height: 100%;display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 12px;overflow-y: scroll;}
+/*#left {
+}*/
+/*#right {width: 50%; 
+height: 100%;}*/
 
 .vegMenu:hover {background-color: #3e8e41}
 .nonVegMenu:hover {background-color: #F84B4B}
@@ -108,6 +108,16 @@ input[type=submit] {
 
 input[type=submit]:hover {
     background-color: #45a049;
+}
+
+#footer {
+    text-align: center;
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:30px;
+   width:100%;
+   background:#999;
 }
 
 /*.dropdown-wrapper{

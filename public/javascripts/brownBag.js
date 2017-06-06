@@ -14,14 +14,18 @@ app.factory('Download', function($resource){
 
 app.controller('menuController', function($window, $scope, $http, $resource, Votes, Names, Download){
 
+$scope.nameArray = [];
 var Names = $resource('/names');
-$scope.names = Names.query();
-	console.log($scope.names);
-
+var names = Names.query(function(){
+	names.forEach(function(obj){
+		$scope.nameArray.push(obj.name);
+	})
+	$scope.nameArray.sort();
+});
 
 var submitReset = function(){
-	console.log("submit reset called");
 	$scope.isSubmitDisabled = true;
+	$scope.submittedMessage = "";
 }
   $scope.items = [
     'The first choice!',
@@ -125,6 +129,7 @@ var submitReset = function(){
 		}
 		Votes.save(vote, function(){
 			console.log("vote saved");
+			$scope.submittedMessage = "Your vote has been successfully saved";
 		});
 	}
 

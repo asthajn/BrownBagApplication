@@ -28,7 +28,7 @@
             {{selected.name || default.name}} <span class="caret"></span>
         </button>
         <ul uib-dropdown-menu role="menu" aria-labelledby="names">
-            <li role="menuitem"><a href="#" ng-repeat="obj in names" data-ng-value="{{obj.name}}">{{obj.name}}</a></li>
+            <li role="menuitem"><a href="#" ng-repeat="name in nameArray" data-ng-value="{{name}}">{{name}}</a></li>
         </ul>
     </div>
         <div class="btn-group" ng-click= "selectPreference($event)" uib-dropdown is-open="status.preferred.isopen">
@@ -50,17 +50,22 @@
         </ul>
     </div>
       </div>
+      <div><input ng-disabled="isSubmitDisabled" type="submit"  ng-click="save()" value="Submit Vote"></div>
+      <div style="color: red">{{submittedMessage}}</div>
       <div>
   <form>
     <!--<label for="fname">Insert Name</label>-->
     <input type="text" id="fname" ng-model="insertedName" name="firstname" placeholder="Your name..">
-    <p>Please insert your name if it doesn't exist in the list</p>
+    <p style="background-color: #999;">Please insert your name if it doesn't exist in the list</p>
   
     <input type="submit" ng-click="insertName()" value="Submit">
   </form>
 </div>
-      <div><input ng-disabled="isSubmitDisabled" type="submit"  ng-click="save()" value="Submit Vote"></div>
+      
       <div><input type="submit"  ng-click="download()" value="Download Data"></div>
-      <div>{{submittedMessage}}</div>
+      
+<footer id="footer">
+  <p>Created By: Astha Jain</p>
+</footer>
    </body>
 </html>
