@@ -58,7 +58,7 @@ img {
 #container {height: 60%; width:80%; font-size: 0;
 }
 #left, #right {width: 50%; 
-height: 100%;display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 12px;overflow-y: scroll;}
+height: 100%;display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 12px;overflow-y: auto;}
 /*#left {
 }*/
 /*#right {width: 50%; 
