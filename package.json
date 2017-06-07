@@ -2,6 +2,10 @@
   "name": "brownbagapp",
   "version": "0.0.0",
   "private": true,
+  "description":"Application to take poll from employees for their next get together lunch menu",
+  "scripts":{
+    "start": "node app.js"
+  },
   "dependencies": {
     "angular": "~1.6.4",
     "angular-bootstrap": "~0.12.2",
